@@ -18,6 +18,10 @@ namespace OxyPlot
         /// <returns>The clipping rectangle.</returns>
         public static OxyRect GetClippingRect(IXyAxisPlotElement element)
         {
+            if (element == null || element.XAxis == null || element.YAxis == null)
+            {
+                return new OxyRect(0, 0, 0, 0);
+            }
             var xrect = new OxyRect(element.XAxis.ScreenMin, element.XAxis.ScreenMax);
             var yrect = new OxyRect(element.YAxis.ScreenMin, element.YAxis.ScreenMax);
             return xrect.Intersect(yrect);
@@ -53,7 +57,12 @@ namespace OxyPlot
         /// <returns>A screen point.</returns>
         public static ScreenPoint Transform(IXyAxisPlotElement element, DataPoint p)
         {
-            return element.XAxis.Transform(p.X, p.Y, element.YAxis);
+            if (element.XAxis != null && element.YAxis != null)
+            {
+                return element.XAxis.Transform(p.X, p.Y, element.YAxis);
+            }
+            return new ScreenPoint(double.PositiveInfinity, double.PositiveInfinity);
+
         }
 
         /// <summary>

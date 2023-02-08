@@ -17,7 +17,7 @@ namespace OxyPlot.SkiaSharp
     /// <summary>
     /// Implements <see cref="IRenderContext" /> based on SkiaSharp.
     /// </summary>
-    public class SkiaRenderContext : IRenderContext, IDisposable
+    public partial class SkiaRenderContext : IRenderContext, IDisposable
     {
         private readonly Dictionary<FontDescriptor, SKShaper> shaperCache = new Dictionary<FontDescriptor, SKShaper>();
         private readonly Dictionary<FontDescriptor, SKTypeface> typefaceCache = new Dictionary<FontDescriptor, SKTypeface>();

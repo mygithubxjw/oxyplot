@@ -245,3 +245,4 @@ launchSettings.json
 
 # Rider
 .idea/
+/Source/OxyPlot.Wpf/Properties

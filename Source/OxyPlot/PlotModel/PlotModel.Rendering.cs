@@ -369,6 +369,10 @@ namespace OxyPlot
 
             foreach (var plotElement in plotElements)
             {
+                if (plotElement == null)
+                {
+                    continue;
+                }
                 var currentClippingRect = plotElement.GetClippingRect();
                 if (!currentClippingRect.Equals(previousClippingRect))
                 {

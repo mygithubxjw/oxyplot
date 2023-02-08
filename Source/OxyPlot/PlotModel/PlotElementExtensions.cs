@@ -30,7 +30,7 @@ namespace OxyPlot
         /// <param name="element">The <see cref="ITransposablePlotElement" />.</param>
         public static bool IsTransposed(this ITransposablePlotElement element)
         {
-            return element.XAxis.IsVertical();
+            return element.XAxis != null && element.XAxis.IsVertical();
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace OxyPlot
         /// <returns>The oriented point.</returns>
         public static ScreenPoint Orientate(this ITransposablePlotElement element, ScreenPoint point)
         {
-            return element.IsTransposed() ? new ScreenPoint(point.Y, point.X) : point;
+            return element == null || element.IsTransposed() ? new ScreenPoint(point.Y, point.X) : point;
         }
 
         /// <summary>

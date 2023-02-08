@@ -99,6 +99,10 @@ namespace OxyPlot.Wpf
         /// </summary>
         protected PlotViewBase()
         {
+            if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
+            {
+                return;
+            }
             this.TrackerDefinitions = new ObservableCollection<TrackerDefinition>();
             this.CommandBindings.Add(new CommandBinding(PlotCommands.ResetAxes, (s, e) => this.ResetAllAxes()));
             this.IsManipulationEnabled = true;
@@ -374,6 +378,11 @@ namespace OxyPlot.Wpf
         /// </summary>
         protected void Render()
         {
+            if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
+            {
+                return;
+            }
+
             if (this.plotPresenter == null || this.renderContext == null)
             {
                 return;

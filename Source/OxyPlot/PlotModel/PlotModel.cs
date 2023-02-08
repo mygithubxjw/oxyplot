@@ -1140,10 +1140,14 @@ namespace OxyPlot
             }
 
             // Update the axes of annotations without axes defined
-            foreach (var a in this.Annotations)
+            for (int i = 0; i < this.Annotations.Count; i++)
             {
-                a.EnsureAxes();
+                this.Annotations[i].EnsureAxes();
             }
+            //foreach (var a in this.Annotations)
+            //{
+            //    a.EnsureAxes();
+            //}
         }
 
         /// <summary>
