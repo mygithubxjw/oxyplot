@@ -644,8 +644,9 @@ namespace OxyPlot.Series
                 maxvalue = double.MinValue;
             }
 
-            foreach (var pt in pts)
+            for(int i =0; i<pts.Count; i++)
             {
+                var pt = pts[i];
                 double x = pt.X;
                 double y = pt.Y;
 

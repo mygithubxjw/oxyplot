@@ -608,6 +608,16 @@ namespace OxyPlot
                         lines.Add(new ScreenPoint(p.x, p.y + size));
                         break;
                     }
+                case MarkerType.VerticalRectangle:
+                    {
+                        rects.Add(new OxyRect(p.x - size / 2, p.y - size, size, size * 2));
+                        break;
+                    }
+                case MarkerType.HorizontalRectangle:
+                    {
+                        rects.Add(new OxyRect(p.x - size, p.y - size / 2, size * 2, size));
+                        break;
+                    }
             }
 
             switch (type)

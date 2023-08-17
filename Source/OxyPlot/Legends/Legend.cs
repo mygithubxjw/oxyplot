@@ -17,6 +17,7 @@ namespace OxyPlot.Legends
     /// </summary>
     public partial class Legend : LegendBase
     {
+
         private OxyRect legendBox;
         /// <summary>
         /// Initializes a new insance of the Legend class.
@@ -89,6 +90,7 @@ namespace OxyPlot.Legends
                             if (this.ShowInvisibleSeries)
                             {
                                 kvp.Key.IsVisible = !kvp.Key.IsVisible;
+                                this.SeriesVisibleChanged?.Invoke(kvp.Key);
                                 this.PlotModel.InvalidatePlot(false);
                                 break;
                             }
@@ -133,6 +135,11 @@ namespace OxyPlot.Legends
         /// Gets or sets the textcolor of invisible series.
         /// </summary>
         public OxyColor SeriesInvisibleTextColor { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public event Action<Series.Series> SeriesVisibleChanged;
 
         /// <summary>
         /// Checks if a screen point is within the legend boundaries.

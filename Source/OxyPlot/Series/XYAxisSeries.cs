@@ -309,6 +309,10 @@ namespace OxyPlot.Series
         /// <remarks>The Text property of the result will not be set, since the formatting depends on the various series.</remarks>
         protected TrackerHitResult GetNearestPointInternal(IEnumerable<DataPoint> points, int startIdx, ScreenPoint point)
         {
+            if (points == null || this.XAxis == null || this.YAxis == null )
+            {
+                return null;
+            }
             var spn = default(ScreenPoint);
             var dpn = default(DataPoint);
             double index = -1;
