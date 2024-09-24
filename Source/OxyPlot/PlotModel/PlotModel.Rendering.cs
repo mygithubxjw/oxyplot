@@ -148,7 +148,7 @@ namespace OxyPlot
         /// <param name="title">The title.</param>
         /// <param name="errorMessage">The error message.</param>
         /// <param name="fontSize">The font size. The default value is 12.</param>
-        private void RenderErrorMessage(IRenderContext rc, string title, string errorMessage, double fontSize = 12)
+       protected virtual void RenderErrorMessage(IRenderContext rc, string title, string errorMessage, double fontSize = 12)
         {
             var p0 = new ScreenPoint(10, 10);
             rc.DrawText(p0, title, this.TextColor, fontWeight: FontWeights.Bold, fontSize: fontSize);
