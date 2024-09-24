@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## [2.2.0] - 2024-09-03
 
 ### Added
 - Example to demonstrate BarSeries HitTest bug (#2038)
@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file.
 - Expanded `IntervalBarSeries` and `TornadoBarSeries` to allow for varied label positions and angles (#2027)
 - VectorSeries (#107)
 - LogarithmicColorAxis (#92)
+- DateTimeAxis.DateTimePrecision property (related to #2061)
 
 ### Changed
 - Make consistent BaseValue and BaseLine across BarSeries, LinearBarSeries, and HistogramSeries
@@ -23,13 +24,17 @@ All notable changes to this project will be documented in this file.
 - Remove support for .NET Core 3.1, as it is end-of-life soon (#1937)
 - Move example projects to .NET Framework 4.6.2 and .NET 6.0 (#1937)
 - Run tests on both .NET Framework 4.6.2 and .NET 6.0 (#1937)
-- Add support for .NET 7.0 (#1937)
-- Update SkiaSharp to Version 2.88.6
+- Add support for .NET 8.0
+- Update SkiaSharp to Version 2.88.8
 - AxisRendererBase is now generic
+- DateTimeAxis.ToDateTime(double value) is now obsolete, replacements are provided (related to #2061)
+- Modify some of the examples to make them deterministic
+- Update SixLabors.ImageSharp.Drawing to non-beta version 1.0.0
 
 ### Removed
 - Support for .NET Framework 4.0 and 4.5 (#1839)
 - Unused LabelColor property from TornadoBarSeries, IntervalBarSeries, and RectangleBarSeries (#2030)
+- AppVeyor build (#2094)
 
 ### Fixed
 - fixed issue with BarSeries, when the HitTest returns the wrong BarItem, when there are invalid items in the list. (#2038)
@@ -41,6 +46,8 @@ All notable changes to this project will be documented in this file.
 - Font weight not being applied in ImageSharp (#2006)
 - SkiaSharp - Fix use of obsolete functions (#1937)
 - Dashed lines are solid when exporting via SkiaSharp.SvgExporter (#1674)
+- DateTimeAxis.ToDateTime doesn't behave as intended in .NET 8 (#2061) 
+- FontFamily ignored by DrawMultilineText
 
 ## [2.1.2] - 2022-12-03
 
@@ -51,6 +58,7 @@ All notable changes to this project will be documented in this file.
 - Add `AxisPreference` to `PlotManipulator`
 - Add MinimumMajorIntervalCount and MaximumMajorIntervalCount Axis Properties (#24)
 - Add VisualStudioToolsManifest.xml to add components to the Visual Studio Designer toolbox (#1446)
+- Add support for `LineJoin` in OxyPlot.ImageSharp
 
 ### Changed
 - Change default `MinimumSegmentLength` to `2` and remove limits for series and annotations with simple geometry (#1853)
@@ -509,6 +517,8 @@ All notable changes to this project will be documented in this file.
 - PngExporter text formatting (#170)
 
 [Unreleased]: https://github.com/oxyplot/oxyplot/compare/v2.1.0...HEAD
+[2.2.0]: https://github.com/oxyplot/oxyplot/compare/v2.1.2...v2.2.0
+[2.1.2]: https://github.com/oxyplot/oxyplot/compare/v2.1.0...v2.1.2
 [2.1.0]: https://github.com/oxyplot/oxyplot/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/oxyplot/oxyplot/compare/v1.0.0...v2.0.0
 [1.0.0]: https://github.com/oxyplot/oxyplot/compare/v0.2014.1.546...v1.0.0
