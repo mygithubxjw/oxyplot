@@ -140,14 +140,20 @@ namespace OxyPlot.SkiaSharp.Wpf
 
             // draw on the bitmap
             this.bitmap.Lock();
-            using (var surface = SKSurface.Create(info, this.bitmap.BackBuffer, this.bitmap.BackBufferStride))
+            try
             {
-                this.OnPaintSurface(new SKPaintSurfaceEventArgs(surface, info));
-            }
+                using (var surface = SKSurface.Create(info, this.bitmap.BackBuffer, this.bitmap.BackBufferStride))
+                {
+                    this.OnPaintSurface(new SKPaintSurfaceEventArgs(surface, info));
+                }
 
-            // draw the bitmap to the screen
-            this.bitmap.AddDirtyRect(new Int32Rect(0, 0, bitmapPixelWidth, bitmapPixelHeight));
-            this.bitmap.Unlock();
+                // draw the bitmap to the screen
+                this.bitmap.AddDirtyRect(new Int32Rect(0, 0, bitmapPixelWidth, bitmapPixelHeight));
+            }
+            finally
+            {
+                this.bitmap.Unlock();
+            }
 
             // get window to screen offset
             var ancestor = GetAncestorVisualFromVisualTree(this);
